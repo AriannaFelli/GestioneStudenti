@@ -1,17 +1,39 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Studente> listaStudenti = new ArrayList();
+        Studente s1 = new Studente("111", "Mario", "Rossi");
+        listaStudenti.add(s1);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        int opzione;
+        do {
+            System.out.println("1. Stampa lista");
+            System.out.println("2. Aggiungi utente");
+            System.out.println("0. Esci");
+            System.out.print("Scelta: ");
+            opzione = sc.nextInt();
+            sc.nextLine();
+            switch (opzione) {
+                case 1:
+                    System.out.println(listaStudenti);
+                    break;
+                case 2:
+                    System.out.println("Inserire matricola nuovo studente: ");
+                    String mat = sc.nextLine();
+                    System.out.println("Inserire nome nuovo studente: ");
+                    String nome = sc.nextLine();
+                    System.out.println("Inserire cognome nuovo studente: ");
+                    String cognome = sc.nextLine();
+                    listaStudenti.add(new Studente(mat, nome, cognome));
+            }
+        } while(opzione != 0);
+
     }
 }
